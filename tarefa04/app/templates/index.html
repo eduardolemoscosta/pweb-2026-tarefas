@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Tarefas{% endblock %}
+
+{% block content %}
+<h2>Resumo</h2>
+<ul>
+    <li>Total de Tarefas: {{ stats.total }}</li>
+    <li>Pendentes: {{ stats.pendentes }}</li>
+    <li>Em Andamento: {{ stats.em_andamento }}</li>
+    <li>Concluídas: {{ stats.concluidas }}</li>
+    <li>Atrasadas: {{ stats.atrasadas }}</li>
+</ul>
+
+<h2>Suas Tarefas</h2>
+{% if tarefas %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Status</th>
+                <th>Prazo</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarefa in tarefas %}
+                <tr>
+                    <td>{{ tarefa.nome }}</td>
+                    <td>{{ tarefa.status }}</td>
+                    <td>{{ tarefa.prazo|date:"d/m/Y" }}</td>
+                    <td>
+                        {% if tarefa.atrasada %}
+                            <strong>Atrasada!</strong>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma tarefa cadastrada. Acesse o <a href="/admin/">Painel de Controle</a> para adicionar novas tarefas.</p>
+{% endif %}
+{% endblock %}

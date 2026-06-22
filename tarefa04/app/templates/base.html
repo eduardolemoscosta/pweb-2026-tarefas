@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gerenciador de Tarefas{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Gerenciador de Tarefas</h1>
+        <nav>
+            <a href="/">Tarefas</a> |
+            <a href="/usuarios/">Usuários</a> |
+            <a href="/admin/">Painel de Controle</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 - Desenvolvido para a disciplina Programação de Aplicação Web.</p>
+    </footer>
+</body>
+</html>
