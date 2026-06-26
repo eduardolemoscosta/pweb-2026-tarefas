@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Últimas Postagens</h2>
+    {% for post in posts %}
+        <article>
+            <h3><a href="{% url 'post_detail' post.id %}">{{ post.titulo }}</a></h3>
+            <p>Publicado em: {{ post.data_publicacao|date:"d/m/Y" }}</p>
+        </article>
+        <hr>
+    {% endfor %}
+{% endblock %}
